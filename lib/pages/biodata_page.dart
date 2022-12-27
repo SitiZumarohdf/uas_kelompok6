@@ -12,6 +12,7 @@ enum Gender { male, female }
 
 class _BiodataPage extends State<BiodataPage> {
   Gender _gender = Gender.male;
+  
   TextEditingController nim = TextEditingController();
   TextEditingController nama = TextEditingController();
   TextEditingController alamat = TextEditingController();
@@ -30,7 +31,6 @@ class _BiodataPage extends State<BiodataPage> {
             child: TextField(
               controller: nim,
               keyboardType: TextInputType.number,
-              controller: nim,
               decoration: InputDecoration(
                   hintText: 'Masukkan NIM',
                   labelText: 'NIM',
