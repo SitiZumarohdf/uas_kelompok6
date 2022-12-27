@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:uas_kelompok6/models/item.dart';
+import 'package:uas_kelompok6/database/dbhelper.dart';
 
 class BiodataPage extends StatefulWidget {
   @override
@@ -40,7 +42,7 @@ class _BiodataPage extends State<BiodataPage> {
               decoration: InputDecoration(
                   hintText: 'Masukkan Nama Lengkap',
                   labelText: 'Nama',
-                  icon: Icon(Icons.people),
+                  icon: Icon(Icons.person),
                   border: OutlineInputBorder(
                       borderRadius: new BorderRadius.circular(5.0))),
             ),
@@ -63,6 +65,7 @@ class _BiodataPage extends State<BiodataPage> {
 
           Row(
             children: <Widget>[
+              Icon(Icons.people),
               Text('Jenis Kelamin'),
               Expanded(
                 child: RadioListTile(
@@ -96,13 +99,8 @@ class _BiodataPage extends State<BiodataPage> {
             child: ElevatedButton(
               child: Text('SAVE'),
               style: ElevatedButton.styleFrom(
-                // textStyle: TextStyle(fontSize: 30),
-                // fixedSize: Size(200, 80),
                 primary: Colors.deepPurple,
                 elevation: 3,
-                // shape: RoundedRectangleBorder(
-                //   borderRadius: BorderRadius.circular(10)
-                // ),
               ),
               onPressed: () {
                 Navigator.pop(context);
@@ -114,29 +112,35 @@ class _BiodataPage extends State<BiodataPage> {
       ),
     );
   }
+  Future<void> addItem(Item item) async {
+    print('goto here2');
+    int result = await DbHelper.insert(item);
+    if (!mounted) return;
+    if (result > 0){
+      showAlertDialog(context);
+    }
+  }
+  showAlertDialog(BuildContext context) {
+  Item item;
+  Widget okButton = MaterialButton(
+    child: Text("OK"),
+    onPressed: () {},
+  );
+  AlertDialog alert = AlertDialog(
+    title: Text("Success"),
+    content: Text("Data Telah di Tambahkan"),
+    actions: [
+      okButton,
+    ],
+  );
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
 }
 
 
-// showAlertDialog(BuildContext context) {
-//   Item item;
-//   Widget okButton = MaterialButton(
-//     child: Text("OK"),
-//     onPressed: () {},
-//   );
-
-//   AlertDialog alert = AlertDialog(
-//     title: Text("BERHASIL"),
-//     content: Text("Data Anda Berhasil Ditambahkan"),
-//     actions: [
-//       okButton,
-//     ],
-//   );
-
-//   showDialog(
-//     context: context,
-//     builder: (BuildContext context) {
-//       return alert;
-//     },
-//   );
-// }
 
