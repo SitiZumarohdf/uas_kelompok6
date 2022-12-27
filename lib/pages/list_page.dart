@@ -44,6 +44,14 @@ late List<Item> globItemList;
 class ListDataPage extends StatefulWidget {
   const ListDataPage({super.key});
 
+  // const ListDataPage({
+  //   Key key,
+  //   this.id,
+  //   this.nim,
+  //   this.nama,
+
+  // }): super(key: key);
+
   @override
   State<ListDataPage> createState() => _ListDataPage();
 }

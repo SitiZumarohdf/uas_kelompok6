@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uas_kelompok6/models/item.dart';
 import 'package:uas_kelompok6/database/dbhelper.dart';
+import 'package:uas_kelompok6/pages/list_page.dart';
 
 class BiodataPage extends StatefulWidget {
   @override
@@ -10,17 +11,17 @@ class BiodataPage extends StatefulWidget {
 enum Gender { male, female }
 
 class _BiodataPage extends State<BiodataPage> {
+  Gender _gender = Gender.male;
   TextEditingController nim = TextEditingController();
   TextEditingController nama = TextEditingController();
   TextEditingController alamat = TextEditingController();
-
-  Gender _gender = Gender.male;
+  TextEditingController jk = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        padding: EdgeInsets.all(10.0),
+        padding: EdgeInsets.all(20.0),
         children: [
           Padding(
             padding: EdgeInsets.only(
@@ -29,6 +30,7 @@ class _BiodataPage extends State<BiodataPage> {
             child: TextField(
               controller: nim,
               keyboardType: TextInputType.number,
+              controller: nim,
               decoration: InputDecoration(
                   hintText: 'Masukkan NIM',
                   labelText: 'NIM',
@@ -39,7 +41,7 @@ class _BiodataPage extends State<BiodataPage> {
           ),
           Padding(
             padding: EdgeInsets.only(
-              top: 10,
+              top: 15,
             ),
             child: TextField(
               controller: nama,
@@ -54,7 +56,7 @@ class _BiodataPage extends State<BiodataPage> {
           ),
           Padding(
             padding: EdgeInsets.only(
-              top: 10,
+              top: 15,
             ),
             child: TextField(
               controller: alamat,
@@ -70,6 +72,7 @@ class _BiodataPage extends State<BiodataPage> {
           Row(
             children: <Widget>[
               Icon(Icons.people),
+              Padding(padding: EdgeInsets.only(top: 15, left: 25)),
               Text('Jenis Kelamin'),
               Expanded(
                 child: RadioListTile(
@@ -97,7 +100,6 @@ class _BiodataPage extends State<BiodataPage> {
               ),
             ],
           ),
-
           Center(
             child: ElevatedButton(
               onPressed: () {
@@ -115,35 +117,34 @@ class _BiodataPage extends State<BiodataPage> {
       ),
     );
   }
+
   Future<void> addItem(Item item) async {
     print('goto here2');
     int result = await DbHelper.insert(item);
     if (!mounted) return;
-    if (result > 0){
+    if (result > 0) {
       showAlertDialog(context);
     }
   }
+
   showAlertDialog(BuildContext context) {
-  Item item;
-  Widget okButton = MaterialButton(
-    child: Text("OK"),
-    onPressed: () {},
-  );
-  AlertDialog alert = AlertDialog(
-    title: Text("Success"),
-    content: Text("Data Telah di Tambahkan"),
-    actions: [
-      okButton,
-    ],
-  );
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return alert;
-    },
-  );
+    Item item;
+    Widget okButton = MaterialButton(
+      child: Text("OK"),
+      onPressed: () {},
+    );
+    AlertDialog alert = AlertDialog(
+      title: Text("Success"),
+      content: Text("Data Telah di Tambahkan"),
+      actions: [
+        okButton,
+      ],
+    );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
 }
-}
-
-
-
