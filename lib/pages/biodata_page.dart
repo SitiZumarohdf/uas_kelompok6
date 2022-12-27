@@ -12,7 +12,7 @@ enum Gender { male, female }
 
 class _BiodataPage extends State<BiodataPage> {
   Gender _gender = Gender.male;
-  
+
   TextEditingController nim = TextEditingController();
   TextEditingController nama = TextEditingController();
   TextEditingController alamat = TextEditingController();
@@ -72,7 +72,7 @@ class _BiodataPage extends State<BiodataPage> {
           Row(
             children: <Widget>[
               Icon(Icons.people),
-              Padding(padding: EdgeInsets.only(top: 15, left: 25)),
+              Padding(padding: EdgeInsets.only(top: 10, left: 20)),
               Text('Jenis Kelamin'),
               Expanded(
                 child: RadioListTile(

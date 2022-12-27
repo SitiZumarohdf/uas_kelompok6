@@ -45,9 +45,7 @@ class _MyHomePage extends State<MyHomePage> {
           body: TabBarView(children: [
             BiodataPage(),
             ListDataPage(),
-          ]
-        ),
-      )
-    );
+          ]),
+        ));
   }
 }
