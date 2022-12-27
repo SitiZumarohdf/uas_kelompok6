@@ -12,6 +12,7 @@ enum Gender { male, female }
 
 class _BiodataPage extends State<BiodataPage> {
   Gender _gender = Gender.male;
+
   TextEditingController nim = TextEditingController();
   TextEditingController nama = TextEditingController();
   TextEditingController alamat = TextEditingController();
@@ -30,7 +31,6 @@ class _BiodataPage extends State<BiodataPage> {
             child: TextField(
               controller: nim,
               keyboardType: TextInputType.number,
-              // controller: nim,
               decoration: InputDecoration(
                   hintText: 'Masukkan NIM',
                   labelText: 'NIM',
@@ -72,11 +72,11 @@ class _BiodataPage extends State<BiodataPage> {
           Row(
             children: <Widget>[
               Icon(Icons.people),
-              Padding(padding: EdgeInsets.only(top: 15, left: 25)),
+              Padding(padding: EdgeInsets.only(top: 10, left: 20)),
               Text('Jenis Kelamin'),
               Expanded(
                 child: RadioListTile(
-                  title: const Text("Pria"),
+                  title: const Text("L"),
                   value: Gender.male,
                   groupValue: _gender,
                   onChanged: (Gender? value) {
@@ -88,7 +88,7 @@ class _BiodataPage extends State<BiodataPage> {
               ),
               Expanded(
                 child: RadioListTile(
-                  title: const Text("Wanita"),
+                  title: const Text("P"),
                   value: Gender.female,
                   groupValue: _gender,
                   onChanged: (Gender? value) {
@@ -103,8 +103,7 @@ class _BiodataPage extends State<BiodataPage> {
           Center(
             child: ElevatedButton(
               onPressed: () {
-                var hello = DbHelper.insert(Item(int.parse(nim.text), nama.text, alamat.text, _gender.toString() == 'Gender.male' ? 'male' : 'female'));
-                print(hello);
+                DbHelper.insert(Item(int.parse(nim.text), nama.text, alamat.text, _gender.toString() == 'Gender.male' ? 'male' : 'female'));
                 // Navigator.pop(context);
               },
               child: Text('SAVE'),
