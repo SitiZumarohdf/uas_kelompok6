@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Item {
-  String? nim;
+  int? nim;
   String? nama;
   String? alamat;
   String? jenisKelamin;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uas_kelompok6/models/item.dart';
 import 'package:uas_kelompok6/database/dbhelper.dart';
+import 'package:uas_kelompok6/pages/list_page.dart';
 
 class BiodataPage extends StatefulWidget {
   @override
@@ -11,6 +12,10 @@ enum Gender { male, female }
 
 class _BiodataPage extends State<BiodataPage> {
   Gender _gender = Gender.male;
+  TextEditingController nim = TextEditingController();
+  TextEditingController nama = TextEditingController();
+  TextEditingController alamat = TextEditingController();
+  TextEditingController jk = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +29,7 @@ class _BiodataPage extends State<BiodataPage> {
             ),
             child: TextField(
               keyboardType: TextInputType.number,
+              controller: nim,
               decoration: InputDecoration(
                   hintText: 'Masukkan NIM',
                   labelText: 'NIM',
@@ -37,6 +43,7 @@ class _BiodataPage extends State<BiodataPage> {
               top: 10,
             ),
             child: TextField(
+              controller: nama,
               keyboardType: TextInputType.name,
               decoration: InputDecoration(
                   hintText: 'Masukkan Nama Lengkap',
@@ -51,6 +58,7 @@ class _BiodataPage extends State<BiodataPage> {
               top: 10,
             ),
             child: TextField(
+              controller: alamat,
               keyboardType: TextInputType.streetAddress,
               decoration: InputDecoration(
                   hintText: 'Masukkan Alamat Lengkap',
@@ -90,11 +98,11 @@ class _BiodataPage extends State<BiodataPage> {
               ),
             ],
           ),
-
           Center(
             child: ElevatedButton(
               onPressed: () {
-                Navigator.pop(context);
+                addItem(Item(int.parse(nim.text), nama.text, alamat.text,
+                    _gender.toString() == 'male' ? 'male' : 'female'));
               },
               child: Text('SAVE'),
               style: ElevatedButton.styleFrom(
@@ -107,35 +115,34 @@ class _BiodataPage extends State<BiodataPage> {
       ),
     );
   }
+
   Future<void> addItem(Item item) async {
     print('goto here2');
     int result = await DbHelper.insert(item);
     if (!mounted) return;
-    if (result > 0){
+    if (result > 0) {
       showAlertDialog(context);
     }
   }
+
   showAlertDialog(BuildContext context) {
-  Item item;
-  Widget okButton = MaterialButton(
-    child: Text("OK"),
-    onPressed: () {},
-  );
-  AlertDialog alert = AlertDialog(
-    title: Text("Success"),
-    content: Text("Data Telah di Tambahkan"),
-    actions: [
-      okButton,
-    ],
-  );
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return alert;
-    },
-  );
+    Item item;
+    Widget okButton = MaterialButton(
+      child: Text("OK"),
+      onPressed: () {},
+    );
+    AlertDialog alert = AlertDialog(
+      title: Text("Success"),
+      content: Text("Data Telah di Tambahkan"),
+      actions: [
+        okButton,
+      ],
+    );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
 }
-}
-
-
-

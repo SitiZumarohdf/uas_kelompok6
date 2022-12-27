@@ -30,25 +30,22 @@ class _MyHomePage extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Biodata Mahasiswa'),
-          backgroundColor: Colors.deepPurple,
-          bottom: TabBar(
-            tabs: [
-              Tab(icon: Icon(Icons.home), text: "Tambah Data"),
-              Tab(icon: Icon(Icons.assignment_ind), text: "Data List"),
-            ],
+        length: 4,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('Biodata Mahasiswa'),
+            backgroundColor: Colors.deepPurple,
+            bottom: TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.home), text: "Tambah Data"),
+                Tab(icon: Icon(Icons.assignment_ind), text: "Data List"),
+              ],
+            ),
           ),
-        ),
-        body: TabBarView(
-          children: [
+          body: TabBarView(children: [
             BiodataPage(),
-            ListDataPage()
-          ]
-        ),
-      )
-    );
+            const ListDataPage(),
+          ]),
+        ));
   }
 }
