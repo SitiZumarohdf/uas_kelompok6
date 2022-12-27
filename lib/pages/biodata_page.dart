@@ -30,7 +30,6 @@ class _BiodataPage extends State<BiodataPage> {
                       borderRadius: new BorderRadius.circular(5.0))),
             ),
           ),
-
           Padding(
             padding: EdgeInsets.only(
               top: 10,
@@ -45,7 +44,6 @@ class _BiodataPage extends State<BiodataPage> {
                       borderRadius: new BorderRadius.circular(5.0))),
             ),
           ),
-
           Padding(
             padding: EdgeInsets.only(
               top: 10,
@@ -60,7 +58,6 @@ class _BiodataPage extends State<BiodataPage> {
                       borderRadius: new BorderRadius.circular(5.0))),
             ),
           ),
-
           Row(
             children: <Widget>[
               Text('Jenis Kelamin'),
@@ -90,10 +87,12 @@ class _BiodataPage extends State<BiodataPage> {
               ),
             ],
           ),
-          
-          Padding(
-            padding:EdgeInsets.only(top:20.0, bottom:20.0),
+
+          Center(
             child: ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
               child: Text('SAVE'),
               style: ElevatedButton.styleFrom(
                 // textStyle: TextStyle(fontSize: 30),
@@ -104,10 +103,6 @@ class _BiodataPage extends State<BiodataPage> {
                 //   borderRadius: BorderRadius.circular(10)
                 // ),
               ),
-              onPressed: () {
-                Navigator.pop(context);
-
-              } 
             ),
           ),
         ],
