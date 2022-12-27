@@ -30,7 +30,6 @@ class _BiodataPage extends State<BiodataPage> {
             child: TextField(
               controller: nim,
               keyboardType: TextInputType.number,
-              controller: nim,
               decoration: InputDecoration(
                   hintText: 'Masukkan NIM',
                   labelText: 'NIM',
@@ -103,7 +102,11 @@ class _BiodataPage extends State<BiodataPage> {
           Center(
             child: ElevatedButton(
               onPressed: () {
-                DbHelper.insert(Item(int.parse(nim.text), nama.text, alamat.text, _gender.toString() == 'Gender.male' ? 'male' : 'female'));
+                DbHelper.insert(Item(
+                    int.parse(nim.text),
+                    nama.text,
+                    alamat.text,
+                    _gender.toString() == 'Gender.male' ? 'male' : 'female'));
                 // Navigator.pop(context);
               },
               child: Text('SAVE'),
