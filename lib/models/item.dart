@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Item {
-  String? nim;
+  int? nim;
   String? nama;
   String? alamat;
   String? jenisKelamin;
@@ -26,7 +26,7 @@ class Item {
     this.nim = map['nim'];
     this.nama = map['nama'];
     this.alamat = map['alamat'];
-    this.jenisKelamin = map['jenis kelamin'];
+    this.jenisKelamin = map['jeniskelamin'];
   }
 
   // Konversi dari item ke map
@@ -35,7 +35,7 @@ class Item {
     map['nim'] = this.nim;
     map['nama'] = nama;
     map['alamat'] = alamat;
-    map['jenis kelamin'] = jenisKelamin;
+    map['jeniskelamin'] = jenisKelamin;
 
     return map;
   }

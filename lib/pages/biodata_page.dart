@@ -10,6 +10,10 @@ class BiodataPage extends StatefulWidget {
 enum Gender { male, female }
 
 class _BiodataPage extends State<BiodataPage> {
+  TextEditingController nim = TextEditingController();
+  TextEditingController nama = TextEditingController();
+  TextEditingController alamat = TextEditingController();
+
   Gender _gender = Gender.male;
 
   @override
@@ -23,6 +27,7 @@ class _BiodataPage extends State<BiodataPage> {
               top: 10,
             ),
             child: TextField(
+              controller: nim,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                   hintText: 'Masukkan NIM',
@@ -37,6 +42,7 @@ class _BiodataPage extends State<BiodataPage> {
               top: 10,
             ),
             child: TextField(
+              controller: nama,
               keyboardType: TextInputType.name,
               decoration: InputDecoration(
                   hintText: 'Masukkan Nama Lengkap',
@@ -51,6 +57,7 @@ class _BiodataPage extends State<BiodataPage> {
               top: 10,
             ),
             child: TextField(
+              controller: alamat,
               keyboardType: TextInputType.streetAddress,
               decoration: InputDecoration(
                   hintText: 'Masukkan Alamat Lengkap',
@@ -94,7 +101,8 @@ class _BiodataPage extends State<BiodataPage> {
           Center(
             child: ElevatedButton(
               onPressed: () {
-                Navigator.pop(context);
+                DbHelper.insert(Item(int.parse(nim.text), nama.text, alamat.text, _gender.toString() == 'Gender.male' ? 'male' : 'female'));
+                // Navigator.pop(context);
               },
               child: Text('SAVE'),
               style: ElevatedButton.styleFrom(
