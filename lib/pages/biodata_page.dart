@@ -12,6 +12,7 @@ enum Gender { male, female }
 
 class _BiodataPage extends State<BiodataPage> {
   Gender _gender = Gender.male;
+  
   TextEditingController nim = TextEditingController();
   TextEditingController nama = TextEditingController();
   TextEditingController alamat = TextEditingController();
