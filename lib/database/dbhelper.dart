@@ -21,27 +21,28 @@ class DbHelper {
       await _createDb(database);
     });
 
-    //mengembalikan nilai object sebagai hasil dari fungsinya
+    // Mengembalikan nilai object sebagai hasil dari fungsinya
     return itemDatabase;
   }
 
   //buat tabel baru dengan nama item
   static Future<void> _createDb(db.Database db) async {
     await db.execute('''
-  CREATE TABLE item(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nim INTEGER,
-    nama TEXT,
-    alamat TEXT,
-    kelamin TEXT
-  )
-''');
+      CREATE TABLE item(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nim INTEGER,
+        nama TEXT,
+        alamat TEXT,
+        kelamin TEXT
+      )
+    ''');
   }
 
   //select database
   static Future<List<Map<String, dynamic>>> select() async {
     final db = await DbHelper.initDb();
     var mapList = await db.query('item', orderBy: 'nama');
+
     return mapList;
   }
 
@@ -49,6 +50,7 @@ class DbHelper {
   static Future<int> insert(Item object) async {
     final db = await DbHelper.initDb();
     int count = await db.insert('item', object.toMap());
+
     return count;
   }
 
@@ -70,11 +72,13 @@ class DbHelper {
   static Future<List<Item>> getItemList() async {
     var itemMapList = await select();
     int count = itemMapList.length;
-    // ignore: deprecated_member_use
+
+    // ignore: deprecated_member_use, prefer_collection_literals
     List<Item> itemList = <Item>[];
     for (int i = 0; i < count; i++) {
       itemList.add(Item.fromMap(itemMapList[i]));
     }
+
     return itemList;
   }
 }

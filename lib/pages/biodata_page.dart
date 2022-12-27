@@ -21,7 +21,7 @@ class _BiodataPage extends State<BiodataPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        padding: EdgeInsets.all(10.0),
+        padding: EdgeInsets.all(20.0),
         children: [
           Padding(
             padding: EdgeInsets.only(
@@ -40,7 +40,7 @@ class _BiodataPage extends State<BiodataPage> {
           ),
           Padding(
             padding: EdgeInsets.only(
-              top: 10,
+              top: 15,
             ),
             child: TextField(
               controller: nama,
@@ -55,7 +55,7 @@ class _BiodataPage extends State<BiodataPage> {
           ),
           Padding(
             padding: EdgeInsets.only(
-              top: 10,
+              top: 15,
             ),
             child: TextField(
               controller: alamat,
@@ -71,6 +71,7 @@ class _BiodataPage extends State<BiodataPage> {
           Row(
             children: <Widget>[
               Icon(Icons.people),
+              Padding(padding: EdgeInsets.only(top: 15, left: 25)),
               Text('Jenis Kelamin'),
               Expanded(
                 child: RadioListTile(
