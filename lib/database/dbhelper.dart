@@ -33,7 +33,7 @@ class DbHelper {
         nim INTEGER,
         nama TEXT,
         alamat TEXT,
-        kelamin TEXT
+        jenisKelamin TEXT
       )
     ''');
   }
@@ -49,9 +49,9 @@ class DbHelper {
   //create database
   static Future<int> insert(Item object) async {
     final db = await DbHelper.initDb();
-    int count = await db.insert('item', object.toMap());
+    return await db.insert('item', object.toMap());
 
-    return count;
+    // return count;
   }
 
   //update database

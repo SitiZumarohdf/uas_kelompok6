@@ -26,7 +26,7 @@ class Item {
     this.nim = map['nim'];
     this.nama = map['nama'];
     this.alamat = map['alamat'];
-    this.jenisKelamin = map['jeniskelamin'];
+    this.jenisKelamin = map['jenisKelamin'];
   }
 
   // Konversi dari item ke map
@@ -35,7 +35,7 @@ class Item {
     map['nim'] = this.nim;
     map['nama'] = nama;
     map['alamat'] = alamat;
-    map['jeniskelamin'] = jenisKelamin;
+    map['jenisKelamin'] = jenisKelamin;
 
     return map;
   }
