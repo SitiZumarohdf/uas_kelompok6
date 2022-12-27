@@ -76,7 +76,7 @@ class _BiodataPage extends State<BiodataPage> {
               Text('Jenis Kelamin'),
               Expanded(
                 child: RadioListTile(
-                  title: const Text("Pria"),
+                  title: const Text("L"),
                   value: Gender.male,
                   groupValue: _gender,
                   onChanged: (Gender? value) {
@@ -88,7 +88,7 @@ class _BiodataPage extends State<BiodataPage> {
               ),
               Expanded(
                 child: RadioListTile(
-                  title: const Text("Wanita"),
+                  title: const Text("P"),
                   value: Gender.female,
                   groupValue: _gender,
                   onChanged: (Gender? value) {
