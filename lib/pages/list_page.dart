@@ -82,7 +82,6 @@ class _ListDataPage extends State<ListDataPage> {
   void updateListView() {
     Future<Database> dbFuture = DbHelper.initDb();
     dbFuture.then((database) {
-      //todo
       Future<List<Item>> itemListFuture = DbHelper.getItemList();
       itemListFuture.then((itemList) {
         setState(() {
@@ -94,11 +93,15 @@ class _ListDataPage extends State<ListDataPage> {
     });
   }
 
-  void navigateToDetailPage(context) {
+  void navigateToDetailPage(context, int index) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => DetailPage(),
+        builder: (context) => DetailPage(
+          nim:globItemList[index].nim,
+          nama:globItemList[index].nama,
+          alamat:globItemList[index].alamat,
+        ),
       ),
     );
   }
@@ -116,11 +119,11 @@ class _ListDataPage extends State<ListDataPage> {
               child: Icon(Icons.ad_units),
             ),
             title: Text(
-              globItemList[index].nama.toString(),
+              globItemList[index].nim.toString(),
               style: Theme.of(context).textTheme.headline5,
             ),
             subtitle: Text(
-              globItemList[index].nim.toString(),
+              globItemList[index].nama.toString(),
             ),
             trailing: GestureDetector(
               child: const Icon(Icons.delete),
@@ -132,7 +135,7 @@ class _ListDataPage extends State<ListDataPage> {
             ),
             // TODO: Navigasi ke DetailPage
             onTap: () async {
-              navigateToDetailPage(context);
+              navigateToDetailPage(context, index);
             },
             // onTap: () async {
             //   var item = ;
