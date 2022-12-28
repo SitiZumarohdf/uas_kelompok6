@@ -38,7 +38,7 @@ class _EditPage extends State<Edit> {
 
   GenderCharacter? _genderCharacter = GenderCharacter.l;
 
-  _EditPage(int id, int nim, String nama, String alamat, String jeniskelamin) {
+  _EditPage(int nim, String nama, String alamat, String jeniskelamin) {
     nim.text = nim.toString();
     nama.text = nama.toString();
     alamat.text = alamat.toString();
