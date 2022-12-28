@@ -17,6 +17,7 @@ class _ListDataPage extends State<ListDataPage> {
   int count = 0;
   late List<Item> itemList;
 
+
   @override
   void initState() {
     super.initState();
@@ -57,16 +58,23 @@ class _ListDataPage extends State<ListDataPage> {
     });
   }
 
-  void navigateToDetailPage(context, int index) {
-    Navigator.push(
+  void navigateToDetailPage(Item item) async {
+    // Navigator.push(
+    //   context,
+    //   MaterialPageRoute(
+    //     builder: (context) => DetailPage(
+    //       nim: globItemList[index].nim,
+    //       nama: globItemList[index].nama,
+    //       alamat: globItemList[index].alamat,
+    //     ),
+    //   ),
+    bool result = await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => DetailPage(
-          nim: globItemList[index].nim,
-          nama: globItemList[index].nama,
-          alamat: globItemList[index].alamat,
-        ),
-      ),
+        builder : (context) {
+          return DetailPage(item);
+        }
+      )
     );
   }
 
@@ -99,7 +107,7 @@ class _ListDataPage extends State<ListDataPage> {
             ),
             // TODO: Navigasi ke DetailPage
             onTap: () async {
-              navigateToDetailPage(context, index);
+              navigateToDetailPage(this.itemList[index]);
             },
             // onTap: () async {
             //   var item = ;
