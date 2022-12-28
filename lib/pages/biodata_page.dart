@@ -103,7 +103,11 @@ class _BiodataPage extends State<BiodataPage> {
           Center(
             child: ElevatedButton(
               onPressed: () {
-                DbHelper.insert(Item(int.parse(nim.text), nama.text, alamat.text, _gender.toString() == 'Gender.male' ? 'male' : 'female'));
+                DbHelper.insert(Item(
+                    int.parse(nim.text),
+                    nama.text,
+                    alamat.text,
+                    _gender.toString() == 'Gender.male' ? 'male' : 'female'));
                 // Navigator.pop(context);
               },
               child: Text('SAVE'),
@@ -134,8 +138,8 @@ class _BiodataPage extends State<BiodataPage> {
       onPressed: () {},
     );
     AlertDialog alert = AlertDialog(
-      title: Text("Success"),
-      content: Text("Data Telah di Tambahkan"),
+      title: Text("Berhasil"),
+      content: Text("Data Berhasil di Tambahkan"),
       actions: [
         okButton,
       ],

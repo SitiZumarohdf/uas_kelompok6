@@ -7,13 +7,20 @@ import 'package:uas_kelompok6/pages/list_page.dart';
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key});
 
-  static const appTitle = 'Edit';
+  static const appTitle = 'Edit Page';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text(appTitle)),
-      body: ,
+      body: Form(
+        key: super.key,
+        child: Column(children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+          ),
+        ]),
+      ),
     );
 
 //     return DefaultTabController(
@@ -44,6 +51,7 @@ class DetailPage extends StatelessWidget {
 //       ),
 //     );
   }
+
   Widget buttonElevated() {
     return ElevatedButton(
       onPressed: () {},
