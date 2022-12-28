@@ -10,7 +10,8 @@ class DetailPage extends StatelessWidget {
     super.key, 
     int? nim, 
     String? nama, 
-    String? alamat});
+    String? alamat
+  });
 
   static const appTitle = 'Home';
 
@@ -21,7 +22,13 @@ class DetailPage extends StatelessWidget {
         appBar: AppBar(
           title: Text('Detail Page'),
           backgroundColor: Colors.deepPurple,
-        )),
+        ),
+        body: Column(
+          children: [
+            // Text('NIM : ')
+          ],
+        )
+      ),
     );
 
     return Scaffold(

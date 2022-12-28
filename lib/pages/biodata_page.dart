@@ -109,6 +109,8 @@ class _BiodataPage extends State<BiodataPage> {
                     alamat.text,
                     _gender.toString() == 'Gender.male' ? 'male' : 'female'));
                 // Navigator.pop(context);
+                Navigator.of(context).push(new MaterialPageRoute(
+                    builder: (context) => ListDataPage()));
               },
               child: Text('SAVE'),
               style: ElevatedButton.styleFrom(
