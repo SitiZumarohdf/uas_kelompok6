@@ -1,17 +1,22 @@
 // import 'package:uas_kelompok6/pages/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:uas_kelompok6/database/DbHelper.dart';
+import 'package:uas_kelompok6/main.dart';
+import 'package:uas_kelompok6/models/item.dart';
 import 'package:uas_kelompok6/pages/biodata_page.dart';
 import 'package:uas_kelompok6/pages/list_page.dart';
 import 'package:uas_kelompok6/pages/edit_list.dart';
 
 class DetailPage extends StatelessWidget {
-  const DetailPage({
-    super.key, 
-    int? nim, 
-    String? nama, 
-    String? alamat
-  });
+  // const DetailPage({
+  //   super.key, 
+  //   int? nim, 
+  //   String? nama, 
+  //   String? alamat
+  // });
+
+  Item item;
+  DetailPage(this.item);
 
   static const appTitle = 'Home';
 
@@ -25,6 +30,58 @@ class DetailPage extends StatelessWidget {
         ),
         body: Column(
           children: [
+            Container(
+              child: Text("Detail Data",
+              style: TextStyle(color: Colors.black,
+              fontWeight: FontWeight.w500,
+              ),),
+              padding: const EdgeInsets.only(top: 20),
+              alignment: Alignment.center,
+            ),
+            Container(
+              child: Text("NIM: " + item.nim.toString(),
+              style: TextStyle(color: Colors.black,
+              fontWeight : FontWeight.w500,
+              )),
+              padding: const  EdgeInsets.only(top: 20, right: 140, bottom: 10),
+            ),
+            Container(
+              child: Text("Nama: " + item.nama.toString(),
+              style: TextStyle(color: Colors.black,
+              fontWeight : FontWeight.w500,
+              )),
+              padding: EdgeInsets.only(top: 20, right: 140, bottom: 10),
+            ),
+            Container(
+              child: Text("Alamat: " + item.alamat.toString(),
+              style: TextStyle(color: Colors.black,
+              fontWeight : FontWeight.w500,
+              )),
+              padding: EdgeInsets.only(top: 20, right: 140, bottom: 10),
+            ),
+            Container(
+              child: Text("Gender: " + item.jenisKelamin.toString(),
+              style: TextStyle(color: Colors.black,
+              fontWeight : FontWeight.w500,
+              )),
+              padding: EdgeInsets.only(top: 20, right: 140, bottom: 10),
+            ),
+            ElevatedButton(
+              onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyApp(),
+                  ),
+                );
+              }, 
+              child: Text("Back"),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.deepPurple,
+                elevation: 3,
+              ),
+              )
+              
             // Text('NIM : ')
           ],
         )
@@ -65,10 +122,10 @@ class DetailPage extends StatelessWidget {
 //     );
   }
 
-  Widget buttonElevated() {
-    return ElevatedButton(
-      onPressed: () {},
-      child: Text("Back", style: TextStyle(fontSize: 20)),
-    );
-  }
+  // Widget buttonElevated() {
+  //   return ElevatedButton(
+  //     onPressed: () {},
+  //     child: Text("Back", style: TextStyle(fontSize: 20)),
+  //   );
+  // }
 }
